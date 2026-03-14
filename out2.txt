@@ -1,0 +1,85 @@
+﻿Server running on http://localhost:3000
+node : MongoDB connection 
+error. Please ensure you 
+replaced <db_password> with 
+your actual password and 
+whitelisted your IP address 
+in Atlas: MongoParseError: 
+options usenewurlparser, 
+useunifiedtopology are not 
+supported
+At line:1 char:1
++ node server.js > out.txt 
+2>&1
++ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (MongoDB  
+   connect...e not support   
+ ed:String) [], RemoteExc    
+eption
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+    at parseOptions (C:\Users
+\razee\Desktop\hotel booking\
+node_modules\mongodb\lib\conn
+ection_string.js:273:15)
+    at new MongoClient (C:\Us
+ers\razee\Desktop\hotel booki
+ng\node_modules\mongodb\lib\m
+ongo_client.js:67:61)
+    at NativeConnection.creat
+eClient (C:\Users\razee\Deskt
+op\hotel booking\node_modules
+\mongoose\lib\drivers\node-mo
+ngodb-native\connection.js:33
+4:14)
+    at 
+NativeConnection.openUri (C:\
+Users\razee\Desktop\hotel boo
+king\node_modules\mongoose\li
+b\connection.js:1074:34)
+    at Mongoose.connect (C:\U
+sers\razee\Desktop\hotel book
+ing\node_modules\mongoose\lib
+\mongoose.js:469:15)
+    at Object.<anonymous> (C:
+\Users\razee\Desktop\hotel 
+booking\server.js:18:10)
+    at Module._compile (node:
+internal/modules/cjs/loader:1
+554:14)
+    at Object..js (node:inter
+nal/modules/cjs/loader:1706:1
+0)
+    at Module.load (node:inte
+rnal/modules/cjs/loader:1289:
+32)
+    at Function._load (node:i
+nternal/modules/cjs/loader:11
+08:12) {
+  errorLabelSet: Set(0) {}
+}
+C:\Users\razee\Desktop\hotel 
+booking\node_modules\mongoose
+\lib\drivers\node-mongodb-nat
+ive\collection.js:131
+            const err = new 
+MongooseError(message);
+                        ^
+
+MongooseError: Operation 
+`users.findOne()` buffering 
+timed out after 10000ms
+    at Timeout._onTimeout (C:
+\Users\razee\Desktop\hotel bo
+oking\node_modules\mongoose\l
+ib\drivers\node-mongodb-nativ
+e\collection.js:131:25)
+    at listOnTimeout 
+(node:internal/timers:594:17)
+    at process.processTimers 
+(node:internal/timers:529:7)
+
+Node.js v22.14.0

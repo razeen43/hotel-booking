@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hotel Paris - Experience unparalleled luxury, fine dining, and breathtaking views of the Eiffel Tower.">
+    <title>Hotel Paris | Authentic French Luxury</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">HOTEL PARIS</a>
+            <div class="nav-links">
+                <a href="#about">The Hotel</a>
+                <a href="#rooms">Suites</a>
+                <a href="#dining">Gastronomy</a>
+                <a href="#" id="authLink" onclick="openAuthModal(); return false;">Sign In</a>
+                <a href="#" id="reservationsLink" style="display: none;" onclick="openReservationsModal(); return false;">My Stays</a>
+                <a href="#" onclick="logout(); return false;" id="logoutLink" style="display: none;">Logout</a>
+                <a href="#contact" class="btn-primary-sm" onclick="openBookingModal('Any Suite'); return false;">Book a Stay</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-bg" style="background-image: url('assets/images/hero.png');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-up">
+            <span class="eyebrow">Maison de Luxe</span>
+            <h1 class="hero-title">L'Élégance Pure</h1>
+            <p class="hero-subtitle">Discover unparalleled luxury in the heart of Paris.</p>
+            <a href="#about" class="btn-outline">Discover More</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="section-container">
+            <div class="about-text scroll-reveal">
+                <span class="eyebrow-dark">Our Legacy</span>
+                <h2>Timeless Parisian Charm</h2>
+                <p>Nestled just steps away from the iconic Eiffel Tower, Hotel Paris has stood as a beacon of luxury and French art de vivre for over a century. Step into a world where classical architecture seamlessly blends with contemporary opulence.</p>
+                <div class="signature">
+                    <p>Director of Hospitality</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suites Section -->
+    <section class="section suites" id="rooms">
+        <div class="section-container text-center scroll-reveal">
+            <span class="eyebrow-dark">Our Accommodations</span>
+            <h2>Chambres & Suites</h2>
+            <p class="section-subtitle">Discover our meticulously curated master suites and classic rooms, designed to envelop you in total comfort accompanied by breathtaking views.</p>
+        </div>
+        
+        <div class="suites-grid">
+            <div class="suite-card scroll-reveal">
+                <div class="suite-image">
+                    <img src="assets/images/classic_room.png" alt="Classic Room">
+                </div>
+                <div class="suite-info">
+                    <h3>Classic Room</h3>
+                    <p>Cozy yet opulent, featuring elegant wallpaper, a plush king-size bed, and soft warm morning sunlight filtering through French doors.</p>
+                    <a href="#" class="btn-primary-sm" onclick="openBookingModal('Classic Room'); return false;">Reserve</a>
+                </div>
+            </div>
+            <div class="suite-card scroll-reveal">
+                <div class="suite-image">
+                    <img src="assets/images/room.png" alt="Executive Suite">
+                </div>
+                <div class="suite-info">
+                    <h3>Executive Suite</h3>
+                    <p>Features bespoke antique furnishings, floor-to-ceiling windows, and a private balcony framing unhindered views of the Parisian skyline.</p>
+                    <a href="#" class="btn-primary-sm" onclick="openBookingModal('Executive Suite'); return false;">Reserve</a>
+                </div>
+            </div>
+            <div class="suite-card scroll-reveal">
+                <div class="suite-image">
+                    <img src="assets/images/penthouse.png" alt="The Penthouse">
+                </div>
+                <div class="suite-info">
+                    <h3>The Penthouse</h3>
+                    <p>An ultra-luxury experience featuring a grand piano, massive windows overlooking the Eiffel Tower, and exclusive gold leaf details.</p>
+                    <a href="#" class="btn-primary-sm" onclick="openBookingModal('The Penthouse'); return false;">Reserve</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining & Menu Section -->
+    <section class="section dining-menu" id="dining">
+        <div class="split-section reverse">
+            <div class="split-content scroll-reveal-left">
+                <span class="eyebrow-dark">Haute Gastronomy</span>
+                <h2>Culinary Excellence</h2>
+                <p>Under the guidance of our Michelin-starred executive chef, our signature restaurant LE CRISTAL brings you a symphony of French flavors. Indulge in an atmosphere crowned with glittering crystal chandeliers and sweeping city views.</p>
+                <a href="#menu-details" class="btn-primary">View Le Menu</a>
+            </div>
+            <div class="split-image scroll-reveal-right">
+                <img src="assets/images/dining.png" alt="Opulent fine dining restaurant">
+            </div>
+        </div>
+
+        <div class="menu-details scroll-reveal" id="menu-details">
+            <div class="menu-intro text-center">
+                <h2>Le Menu</h2>
+                <div class="decorative-line"></div>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-image">
+                    <img src="assets/images/menu_food.png" alt="Gourmet Dish">
+                </div>
+                <div class="menu-items">
+                    <div class="menu-category">
+                        <h3>Les Entrées</h3>
+                        <div class="menu-item"><div class="mi-header"><span>Foie Gras de Canard</span> <span class="price">€45</span></div><p>Fig chutney, toasted brioche, balsamic glaze</p></div>
+                        <div class="menu-item"><div class="mi-header"><span>Bisque de Homard</span> <span class="price">€38</span></div><p>Blue lobster bisque, crème fraîche, caviar</p></div>
+                    </div>
+                    <div class="menu-category">
+                        <h3>Les Plats</h3>
+                        <div class="menu-item"><div class="mi-header"><span>Bœuf Wellington</span> <span class="price">€85</span></div><p>Prime beef tenderloin, mushroom duxelles, truffle jus</p></div>
+                        <div class="menu-item"><div class="mi-header"><span>Sole Meunière</span> <span class="price">€70</span></div><p>Pan-roasted dover sole, brown butter, capers, lemon</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta" id="contact">
+        <div class="cta-content scroll-reveal">
+            <h2>Your Parisian Dream Awaits</h2>
+            <p>Reserve directly with us to ensure priority upgrades and exclusive amenities.</p>
+            <button class="btn-outline" style="border-color: var(--color-gold); color: var(--color-gold); background: transparent;" onclick="openBookingModal('Any Suite'); return false;">Check Availability</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>HOTEL PARIS</h3>
+                <p>12 Avenue Montaigne, 75008 Paris, France</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Hotel Paris. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+
+    <!-- Authentication Modal -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-content auth-modal-content">
+            <button class="close-modal" onclick="closeAuthModal()">&times;</button>
+            <div class="modal-header">
+                <h2 id="authTitle">Sign In</h2>
+                <p id="authSubtitle">Welcome back to Hotel Paris.</p>
+            </div>
+            <form id="authForm" onsubmit="handleAuthSubmit(event)">
+                <div class="form-group" id="nameGroup" style="display:none;">
+                    <label>Full Name</label>
+                    <input type="text" id="authName" placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="authEmail" required placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="authPassword" required placeholder="Password">
+                </div>
+                <button type="submit" class="btn-primary w-100" id="authSubmitBtn">Sign In</button>
+                <div class="auth-switch">
+                    <a href="#" onclick="toggleAuthMode(); return false;" id="authSwitchLink">Don't have an account? Register here.</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reservations Modal -->
+    <div class="modal-overlay" id="reservationsModal">
+        <div class="modal-content large-modal">
+            <button class="close-modal" onclick="closeReservationsModal()">&times;</button>
+            <div class="modal-header">
+                <h2>My Stays</h2>
+                <p>Your upcoming and past reservations.</p>
+            </div>
+            <div id="reservationsList">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-content large-modal">
+            <button class="close-modal" onclick="closeBookingModal()">&times;</button>
+            <div class="modal-header">
+                <h2>Select Your Dates</h2>
+                <div style="margin-top: 1rem;">
+                    <select id="suiteSelect" onchange="handleSuiteChange(this.value)">
+                        <option value="Classic Room">Classic Room</option>
+                        <option value="Executive Suite">Executive Suite</option>
+                        <option value="The Penthouse">The Penthouse</option>
+                        <option value="Any Suite">Any Suite</option>
+                    </select>
+                </div>
+                <p style="margin-top:0.5rem; font-size:0.9rem; color:#666;">If dates are crossed out, this suite is already reserved.</p>
+            </div>
+            
+            <div class="calendar-wrapper">
+                <div class="calendar-header">
+                    <button onclick="prevMonth()">&lt;</button>
+                    <h3 id="calendarMonthYear">March 2026</h3>
+                    <button onclick="nextMonth()">&gt;</button>
+                </div>
+                <div class="calendar-days-of-week">
+                    <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                </div>
+            </div>
+            
+            <div class="booking-summary" id="bookingSummary" style="display: none;">
+                <p><strong>Check-in:</strong> <span id="summaryCheckin"></span></p>
+                <p><strong>Check-out:</strong> <span id="summaryCheckout"></span></p>
+                <button class="btn-primary w-100" onclick="confirmReservation()">Confirm Reservation</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

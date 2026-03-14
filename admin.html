@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Paris | Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { background-color: var(--color-bg-light); padding: 2rem; }
+        .admin-header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid var(--color-gold); padding-bottom: 1rem; margin-bottom: 2rem;
+        }
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        table {
+            width: 100%; border-collapse: collapse; margin-top: 1rem;
+        }
+        th, td {
+            padding: 1rem; text-align: left; border-bottom: 1px solid #eee;
+        }
+        th {
+            background: var(--color-primary); color: var(--color-text-light); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;
+        }
+        tr:hover { background-color: #fcfcfc; }
+        .password-field { font-family: monospace; letter-spacing: 1px; color: #d32f2f; font-weight: bold; }
+        .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; background: var(--color-gold); color: #fff;}
+        .badge.admin { background: var(--color-primary); color: var(--color-gold);}
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <div>
+                <span class="eyebrow-dark">Security Dashboard</span>
+                <h2>Admin Customer Records</h2>
+                <p>Viewing all registered customers and their credentials.</p>
+                <p style="color:red; font-size: 0.85rem; font-weight: 500;">WARNING: User passwords are displayed in raw plain-text format for admin auditing purposes as requested.</p>
+            </div>
+            <a href="/" class="btn-primary-sm" style="color: var(--color-primary); border-color: var(--color-primary);">Return to Site</a>
+        </div>
+
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>User ID / Date</th>
+                    <th>Full Name</th>
+                    <th>Email Address</th>
+                    <th>Account Password</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <tr><td colspan="5" class="text-center">Loading user secure records...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const tbody = document.getElementById('userTableBody');
+            try {
+                const response = await fetch('/api/admin/users');
+                if(!response.ok) throw new Error("Could not fetch data");
+                const users = await response.json();
+                
+                tbody.innerHTML = '';
+                
+                if(users.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="text-center">No users found in database.</td></tr>';
+                    return;
+                }
+
+                users.forEach(user => {
+                    const row = document.createElement('tr');
+                    
+                    const date = new Date(user.createdAt).toLocaleDateString();
+                    
+                    row.innerHTML = `
+                        <td><small style="color:#888;">${user._id}</small><br>${date}</td>
+                        <td style="font-weight: 500;">${user.name}</td>
+                        <td><a href="mailto:${user.email}" style="color: #1a73e8;">${user.email}</a></td>
+                        <td class="password-field">${user.password}</td>
+                        <td><span class="badge ${user.isAdmin ? 'admin' : ''}">${user.isAdmin ? 'Admin' : 'Customer'}</span></td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (error) {
+                console.error(error);
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center" style="color:red;">Failed to load data. Is the Node database server running?</td></tr>';
+            }
+        });
+    </script>
+</body>
+</html>
